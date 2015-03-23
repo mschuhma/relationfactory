@@ -4,7 +4,7 @@ response=$1
 key=$2
 #optargs="${@:3}"
 
-
+javac $TAC_ROOT/evaluation/bin/SFScore.java
 java -cp $TAC_ROOT/evaluation/bin/ SFScore $response $key anydoc \
 | grep -P '\tRecall:|\tPrecision:|\tF1:'
 

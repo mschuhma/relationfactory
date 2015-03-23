@@ -6,6 +6,10 @@
 # Author: Benjamin Roth
 
 # copies query.xml from location specified in config file
+
+#set bash
+SHELL := /bin/bash
+
 query.xml:
 	cp $(shell $(TAC_ROOT)/bin/get_expand_config.sh query.xml) $@
 
