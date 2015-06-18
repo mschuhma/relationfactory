@@ -71,5 +71,5 @@ response: response_all_pp13
 
 # My cleaning script
 clean:
-	rm -f candidates.pb query_expanded.xml response_classifier sfeatures
+	rm -f candidates candidates.pb query.xml query_expanded.xml response_classifier sfeatures
 
