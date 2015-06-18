@@ -2,13 +2,14 @@
 
 if [ $# -eq 0 ]
   then
-    echo "Path to clueweb data files missing (doc3-xport-tokenizer-query-???-entity_pairs.tsv.xz)"
+    echo "Path to clueweb data files missing (query-???.tsv.xz)."
+    echo "If data non-existing, run cluetator.sh first"
     exit 1;
 fi
 
 echo "Getting clueweb data from $1"
 
-for f in `find $1/ -maxdepth 1 -name doc3-xport-tokenizer-query-???-entity_pairs.tsv.xz -type f | sort`; do
+for f in `find $1/ -maxdepth 1 -name query-???.tsv.xz -type f | sort`; do
   qid=${f:(-23):(-20)};
   if [ -f "predictions_classifier_$qid.gz" ]
   then
