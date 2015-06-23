@@ -104,6 +104,10 @@ response_fast: query_expanded.xml response_alternate_names response_classifier r
 response_shortened_patterns_plus: query_expanded.xml response_alternate_names response_classifier response_shortened_patterns response_induced_patterns response_patterns
 	$(TAC_ROOT)/components/bin/merge_responses.sh $+ > $@
 
+#response_clueweb: query_expanded.xml response_classifier response_shortened_patterns response_induced_patterns response_patterns
+response_clueweb: query_expanded.xml response_classifier response_induced_patterns response_patterns
+	$(TAC_ROOT)/components/bin/merge_responses.sh $+ > $@
+
 response_nosvm: query_expanded.xml response_alternate_names response_induced_patterns response_patterns
 	$(TAC_ROOT)/components/bin/merge_responses.sh $+ > $@
 
@@ -204,3 +208,6 @@ run2013_nosyntax:	response_nosyntax_pp13
 
 2013: run2013_fast run2013_prec run2013_all run2013_recall run2013_nosyntax
 
+# Cleaning
+clean_clueweb:
+	rm -f query_expanded.xml response_classifier response_shortened_patterns response_induced_patterns response_patterns

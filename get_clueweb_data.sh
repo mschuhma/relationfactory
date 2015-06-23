@@ -28,10 +28,11 @@ fi
 git checkout relation_factory;
 mvn -q package -Dmaven.test.skip=true | grep -v "already added, skipping" | grep -v "INFO" | grep -Pv "Generating.*html";
 cp target/cluetator-*-jar-with-dependencies.jar $Ctar;
-if [ ! -f /src/main/resources/conf/cluetator.properties ]
+if [ ! -f "src/main/resources/conf/cluetator.properties" ]
  then
-  echo "Config file cluetator/src/main/resources/conf/cluetator.properties is missing!;
+  echo "Config file cluetator/src/main/resources/conf/cluetator.properties is missing!";
   exit 1;
+fi
 cd ..;
 
 echo "Getting/updating clueweb12 data";
@@ -49,7 +50,7 @@ cd ..;
 
 echo "Processing clueweb12 with Cluetator into Relation Factory format";
 cd $C;
-java -cp $Ctar de.dwslab.cluetator.textgraph.RelationFactoryWriter "../$D/clue12/100queries_cluetator";
+java -Xmx32g -cp $Ctar de.dwslab.cluetator.textgraph.RelationFactoryWriter "../$D/clue12/100queries_cluetator";
 mv query-*.tsv.xz ../$D/;
 mv query-*.tsv.debug.xz ../$D/;
 mv query-*.xml.gz ../$D/;
