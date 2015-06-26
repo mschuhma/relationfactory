@@ -68,3 +68,7 @@ done
 
 # Cleanup
 make clean;
+
+# Post-process for web format (cluetator)
+cd ..;
+./clueweb_postprocess_results.sh;
