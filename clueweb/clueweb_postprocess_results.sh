@@ -1,6 +1,7 @@
 #! /bin/bash
 
-cdir=clueweb_run;
+#cdir=clueweb_run;
+cdir=$1;
 keyfile=all-relkeys-sorted.tsv.gz;
 
 if [ ! -d $cdir ]
@@ -23,7 +24,7 @@ for f in $(find . -maxdepth 1 -type f -name "response_clueweb_???.gz") ; do
    LC_ALL=C join -1 4 -2 1 -a 1 -i -t $'\t' \
      <(zcat $f | grep -v NIL | LC_ALL=C sort -f -k4,4) \
      <(zcat $keyfile) | \
-     cut -f1,3,10- | sort -k1,1 -k3,3 -k2,2 | \
+     cut -f1,3,10- | sort -k1,1 -k2,2 -k3,3nr | \
      gzip > $fout;
    echo "$fout finished";
   fi

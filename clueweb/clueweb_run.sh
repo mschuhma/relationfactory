@@ -71,4 +71,4 @@ make clean;
 
 # Post-process for web format (cluetator)
 cd ..;
-./clueweb_postprocess_results.sh;
+./clueweb_postprocess_results.sh $clwd;
