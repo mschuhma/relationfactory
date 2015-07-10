@@ -6,4 +6,4 @@ fi
 cd relplay;
 git pull;
 
-./run_replay.sh
+./run_relplay.sh
